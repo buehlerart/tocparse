@@ -1,0 +1,24 @@
+tocparse - simple cmd line, POC NodeJS based Javascript parser for toc files
+-------------------------------------------------------------------------------
+
+xpath and xmldom are used for DOM parsing.
+
+Two elements are expected for a TOC to be parsed properly:
+
+1. at least one nav element
+2. <a> tags within a <nav>
+
+The level of the nesting is determined by querying the location of the top 
+level <nav> element for any given <a> tag.
+
+
+To run:  "node tocparse.js path/to/toc/file"
+e.g.: "node tocparse.js /Volumes/repositories/some-epub/root/OPS/xhtml/toc.xhtml"
+
+Information about each TOC element is returned in stdout as a block, e.g.:
+
+[*] <a href="pg0006.xhtml">Level Four</a>
+    level: 4
+    content: Level Four
+    href: pg0006.xhtml
+
